@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+    <title>Helioki Creatives</title>
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-head">
+        <h1 class="page-title">Motion components <span>ready to drop into any web project.</span></h1>
+        <div class="tabs" role="group" aria-label="Filter components"><span class="tabs-pill" aria-hidden="true"></span></div>
+      </header>
+      <section class="grid" aria-label="Components"></section>
+      <footer class="page-foot">Helioki Creatives · Original motion components for the web.</footer>
+    </main>
+
+    <dialog class="detail" aria-labelledby="detail-title">
+      <div class="detail-inner">
+        <div class="detail-stage"></div>
+        <aside class="detail-side">
+          <div class="detail-top">
+            <div class="detail-nav">
+              <button type="button" class="detail-step detail-prev" aria-label="Previous component">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+              </button>
+              <span class="detail-count" aria-hidden="true"></span>
+              <button type="button" class="detail-step detail-next" aria-label="Next component">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+              </button>
+            </div>
+            <button type="button" class="detail-step detail-close" aria-label="Close">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+          </div>
+          <p class="sr-only detail-status" aria-live="polite"></p>
+          <p class="detail-group"></p>
+          <h2 class="detail-title" id="detail-title"></h2>
+          <p class="detail-desc"></p>
+          <form class="detail-params" aria-label="Parameters"></form>
+          <div class="detail-actions"><button type="button" class="btn-primary detail-copy">Copy code</button></div>
+          <p class="detail-note">Standalone ES module. Needs <code>gsap</code>. Call <code>mount(el, { images: [{ src, alt }] })</code>.</p>
+        </aside>
+      </div>
+      <div class="toast" role="status" aria-live="polite"></div>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
