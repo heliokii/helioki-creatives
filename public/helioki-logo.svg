@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2900 2900" role="img" aria-label="Helioki logo">
+  <rect width="2900" height="2900" fill="#FFFFFF"/>
+  <!-- Helioki mark, measured from the HELIOKI brand file (mark is 1804 x 2285 units): framed K with a middle bar -->
+  <g transform="translate(548 307.5)">
+    <defs>
+      <clipPath id="hk-inner"><rect x="230" y="200" width="1352" height="1885"/></clipPath>
+      <clipPath id="hk-below-bar"><rect x="230" y="1116" width="1352" height="969"/></clipPath>
+    </defs>
+    <path fill="#000000" fill-rule="evenodd" d="M0 0H1804V2285H0Z M230 200V2085H1582V200Z"/>
+    <rect fill="#000000" x="230" y="1016" width="1352" height="200"/>
+    <!-- upper arm: top edge down through the bar to the left side -->
+    <line clip-path="url(#hk-inner)" stroke="#000000" stroke-width="185" x1="1800" y1="-200" x2="-577" y2="2300"/>
+    <!-- lower leg: out of the bar down into the bottom-right corner -->
+    <line clip-path="url(#hk-below-bar)" stroke="#000000" stroke-width="200" x1="595" y1="900" x2="1740" y2="2400"/>
+  </g>
+</svg>
