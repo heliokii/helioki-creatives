@@ -22,6 +22,9 @@ import { labelFor } from './effort-slider.js'
 import { bestAnswer, FAQ } from './infinite-faq.js'
 import { charFor, RAMP } from './ascii-reveal.js'
 import { DIGITS } from './departure-board.js'
+import { navState } from './shrink-nav.js'
+import { riseFor } from './wordmark-footer.js'
+import { curtainOffset } from './curtain-footer.js'
 
 test('components only use the shared palette, with matching fallbacks', () => {
   const css = readFileSync(new URL('../style.css', import.meta.url), 'utf8')
@@ -113,4 +116,24 @@ test('column wrap stays centered on the stage', () => {
   assert.equal(wrapCentered(0, 100), 0)
   assert.equal(wrapCentered(60, 100), -40)
   assert.equal(wrapCentered(-60, 100), 40)
+})
+
+test('sticky nav floats past the threshold, hides going down, returns going up', () => {
+  assert.deepEqual(navState(0, 0, 40, false), { floating: false, hidden: false })
+  assert.deepEqual(navState(100, 50, 40, false), { floating: true, hidden: false })
+  assert.deepEqual(navState(300, 200, 40, false), { floating: true, hidden: true })
+  assert.deepEqual(navState(250, 300, 40, true), { floating: true, hidden: false })
+  assert.deepEqual(navState(300, 300, 40, true), { floating: true, hidden: true })
+})
+
+test('wordmark letters rise left to right and all land by the end', () => {
+  assert.equal(riseFor(0, 0, 5), 0)
+  assert.ok(riseFor(0.5, 0, 5) > riseFor(0.5, 4, 5))
+  for (let i = 0; i < 5; i++) assert.equal(riseFor(1, i, 5), 1)
+})
+
+test('curtain footer stays pinned until its own spot arrives', () => {
+  assert.equal(curtainOffset(0, 300, 1000, 200), -900)
+  assert.equal(curtainOffset(900, 300, 1000, 200), 0)
+  assert.equal(curtainOffset(950, 300, 1000, 200), 0)
 })
