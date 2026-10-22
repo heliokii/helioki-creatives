@@ -25,6 +25,7 @@ import { DIGITS } from './departure-board.js'
 import { navState } from './shrink-nav.js'
 import { riseFor } from './wordmark-footer.js'
 import { curtainOffset } from './curtain-footer.js'
+import { stepParticle, mixColor } from './particle-wordmark.js'
 
 test('components only use the shared palette, with matching fallbacks', () => {
   const css = readFileSync(new URL('../style.css', import.meta.url), 'utf8')
@@ -136,4 +137,25 @@ test('curtain footer stays pinned until its own spot arrives', () => {
   assert.equal(curtainOffset(0, 300, 1000, 200), -900)
   assert.equal(curtainOffset(900, 300, 1000, 200), 0)
   assert.equal(curtainOffset(950, 300, 1000, 200), 0)
+})
+
+test('wordmark particles settle home, float free while scattered, and dodge the cursor', () => {
+  const far = 1e4
+  const home = { kind: 0, hx: 50, hy: 50, x: 150, y: 50, vx: 0, vy: 0, ph: 0 }
+  for (let t = 0; t < 600; t++) stepParticle(home, t * 0.016, 0, far, far, 120)
+  assert.ok(Math.hypot(home.x - 50, home.y - 50) < 2)
+  const loose = { kind: 0, hx: 50, hy: 50, x: 150, y: 50, vx: 0, vy: 0, ph: 0 }
+  stepParticle(loose, 0, 1.6, far, far, 120)
+  assert.ok(Math.abs(loose.vx) < 0.2, 'no spring while energy is high')
+  const near = { kind: 0, hx: 0, hy: 0, x: 0, y: 0, vx: 0, vy: 0, ph: Math.PI / 2 }
+  stepParticle(near, 0, 1, 30, 0, 120)
+  assert.ok(near.vx < -0.5, 'pushed away from the cursor')
+  const out = { kind: 0, hx: 0, hy: 0, x: 0, y: 0, vx: 0, vy: 0, ph: Math.PI / 2 }
+  stepParticle(out, 0, 1, 200, 0, 120)
+  assert.ok(Math.abs(out.vx) < 0.2, 'outside the radius feels nothing')
+})
+
+test('wordmark colors blend between two hex colors', () => {
+  assert.equal(mixColor('#e9e5d6', '#e9a14a', 0), 'rgb(233 229 214)')
+  assert.equal(mixColor('#e9e5d6', '#e9a14a', 1), 'rgb(233 161 74)')
 })

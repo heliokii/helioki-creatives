@@ -26,6 +26,13 @@ export const components = [
     load: () => import('./cursor-dog.js'),
   },
   {
+    id: 'particle-wordmark',
+    title: 'Particle Wordmark',
+    group: 'featured',
+    description: 'The Helioki mark and wordmark built from a few thousand particles that drift into place and shy away from the cursor. Click and they burst apart, then pull themselves back together.',
+    load: () => import('./particle-wordmark.js'),
+  },
+  {
     id: 'otp-input',
     title: 'Animated Code Input',
     group: 'controls',
