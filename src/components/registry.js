@@ -12,11 +12,11 @@ export const groups = {
 // Concept credits live in each module's top comment.
 export const components = [
   {
-    id: 'wedding-rsvp',
-    title: 'Wedding RSVP',
+    id: 'particle-wordmark',
+    title: 'Particle Wordmark',
     group: 'featured',
-    description: 'Crack the wax seal and the invitation slides out of its envelope. Reply with your guest count and it tucks itself back in under a fresh seal; accepting brings a shower of petals.',
-    load: () => import('./wedding-rsvp.js'),
+    description: 'The Helioki mark and wordmark built from a few thousand particles that drift into place and shy away from the cursor. Click and they burst apart, then pull themselves back together.',
+    load: () => import('./particle-wordmark.js'),
   },
   {
     id: 'cursor-dog',
@@ -26,11 +26,11 @@ export const components = [
     load: () => import('./cursor-dog.js'),
   },
   {
-    id: 'particle-wordmark',
-    title: 'Particle Wordmark',
+    id: 'wedding-rsvp',
+    title: 'Wedding RSVP',
     group: 'featured',
-    description: 'The Helioki mark and wordmark built from a few thousand particles that drift into place and shy away from the cursor. Click and they burst apart, then pull themselves back together.',
-    load: () => import('./particle-wordmark.js'),
+    description: 'Crack the wax seal and the invitation slides out of its envelope. Reply with your guest count and it tucks itself back in under a fresh seal; accepting brings a shower of petals.',
+    load: () => import('./wedding-rsvp.js'),
   },
   {
     id: 'otp-input',
